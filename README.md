@@ -12,7 +12,7 @@
       <img src="https://img.shields.io/discord/1073293645303795742?cacheSeconds=3600" alt="Discord">
   </a> |
   <a href="https://github.com/chroma-core/chroma/blob/master/LICENSE" target="_blank">
-      <img src="https://img.shields.io/static/v1?label=license&message=MIT&color=white" alt="License">
+      <img src="https://img.shields.io/static/v1?label=license&message=Apache%202.0&color=white" alt="License">
   </a> |
   <a href="https://steel.dev/" target="_blank">
       Docs
@@ -189,4 +189,4 @@ The Steel browser is an open-source project, and we welcome contributions!
 - [Read our contributing guide](https://steel.dev/contributing)
 
 ## License
-[MIT](./LICENSE)
+[Apache 2.0](./LICENSE)
