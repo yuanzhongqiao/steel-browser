@@ -459,6 +459,10 @@ export class CDPService extends EventEmitter {
     );
   }
 
+  public getUserAgent() {
+    return this.fingerprintData?.fingerprint.navigator.userAgent;
+  }
+
   public async getBrowserState(): Promise<{
     cookies: Protocol.Network.Cookie[];
     localStorage: Record<string, Record<string, string>>;
@@ -476,11 +480,14 @@ export class CDPService extends EventEmitter {
     if (!this.launchConfig?.logSinkUrl) return;
 
     try {
-      await fetch(this.launchConfig.logSinkUrl, {
+      const response = await fetch(this.launchConfig.logSinkUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(event),
       });
+      if (!response.ok) {
+        this.logger.error(`Error logging event from CDPService: ${event.type} ${response.statusText}`);
+      }
     } catch (error) {
       this.logger.error(`Error logging event from CDPService: ${error}`);
     }

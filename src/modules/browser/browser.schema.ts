@@ -19,6 +19,10 @@ const LaunchBrowserRequest = z.object({
 
 const LaunchBrowserResponse = z.object({
   success: z.boolean(),
+  browserDetails: z.object({
+    userAgent: z.string().optional(),
+    ipAddress: z.string().optional(),
+  }),
 });
 
 export type LaunchBrowserRequestBody = z.infer<typeof LaunchBrowserRequest>;

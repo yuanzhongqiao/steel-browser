@@ -31,7 +31,7 @@ export const handleLaunchBrowserSession = async (
     // Need to handle these separately or extend BrowserLauncherOptions if needed
 
     await browserService.startNewSession(browserLauncherOptions);
-    return reply.send({ success: true });
+    return reply.send({ success: true, browserDetails: { userAgent: browserService.getUserAgent() } });
   } catch (e: unknown) {
     const error = getErrors(e);
     return reply.code(500).send({ success: false, message: error });
