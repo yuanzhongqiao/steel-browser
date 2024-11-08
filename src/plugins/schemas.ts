@@ -1,12 +1,13 @@
 import { FastifyPluginAsync } from "fastify";
 import fp from "fastify-plugin";
 import fastifySwagger from "@fastify/swagger";
-import fastifySwaggerUi from "@fastify/swagger-ui";
+import fastifyScalar from "@scalar/fastify-api-reference";
 import { titleCase } from "../utils/text";
 import actionSchemas from "../modules/actions/actions.schema";
 import browserSchemas from "../modules/browser/browser.schema";
 import seleniumSchemas from "../modules/selenium/selenium.schema";
 import { buildJsonSchemas } from "../utils/schema";
+import scalarTheme from "./scalar-theme";
 
 const SCHEMAS = {
   ...actionSchemas,
@@ -46,11 +47,10 @@ const schemaPlugin: FastifyPluginAsync = async (fastify) => {
     },
   });
 
-  await fastify.register(fastifySwaggerUi, {
+  await fastify.register(fastifyScalar, {
     routePrefix: "/documentation",
-    uiConfig: {
-      docExpansion: "none", // expand/not all the documentations none|list|full
-      deepLinking: true,
+    configuration: {
+      customCss: scalarTheme
     },
   });
 };
