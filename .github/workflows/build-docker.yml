@@ -1,9 +1,7 @@
 name: Build and Push Latest Docker Image to GHCR
 
 on:
-  push:
-    branches:
-      - main
+  pull_request:
 
 jobs:
   push_to_registry:
