@@ -15,7 +15,7 @@ async function routes(server: FastifyInstance) {
       schema: {
         operationId: "health",
         description: "Check if the server and browser are running",
-        tags: ["sessions"],
+        tags: ["Health"],
         summary: "Check if the server and browser are running",
       },
     },
@@ -30,9 +30,9 @@ async function routes(server: FastifyInstance) {
     "/sessions",
     {
       schema: {
-        operationId: "launch-browser-session",
+        operationId: "launch_browser_session",
         description: "Launch a browser session",
-        tags: ["sessions"],
+        tags: ["Sessions"],
         summary: "Launch a browser session",
         body: $ref("CreateSession"),
         response: {
@@ -49,7 +49,7 @@ async function routes(server: FastifyInstance) {
       schema: {
         operationId: "get_session_details",
         description: "Get session details",
-        tags: ["sessions"],
+        tags: ["Sessions"],
         summary: "Get session details",
       },
     },
@@ -63,7 +63,7 @@ async function routes(server: FastifyInstance) {
       schema: {
         operationId: "get_browser_context",
         description: "Get a browser context",
-        tags: ["sessions"],
+        tags: ["Sessions"],
         summary: "Get a browser context",
       },
     },
@@ -74,11 +74,10 @@ async function routes(server: FastifyInstance) {
     "/sessions/:sessionId/release",
     {
       schema: {
-        operationId: "exit-browser-session",
-        description: "Exit a browser session",
-        tags: ["sessions"],
-        summary: "Exit a browser session",
-        body: $ref("NullableRequest"),
+        operationId: "release_browser_session",
+        description: "Release a browser session",
+        tags: ["Sessions"],
+        summary: "Release a browser session",
       },
     },
     async (request: FastifyRequest, reply: FastifyReply) =>
@@ -89,11 +88,10 @@ async function routes(server: FastifyInstance) {
     "/sessions/release",
     {
       schema: {
-        operationId: "exit-browser-session",
-        description: "Exit a browser session",
-        tags: ["sessions"],
-        summary: "Exit a browser session",
-        body: $ref("NullableRequest"),
+        operationId: "release_browser_sessions",
+        description: "Release browser sessions",
+        tags: ["Sessions"],
+        summary: "Release browser sessions",
       },
     },
     async (request: FastifyRequest, reply: FastifyReply) =>

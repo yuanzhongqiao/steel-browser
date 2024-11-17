@@ -10,7 +10,7 @@ async function routes(server: FastifyInstance) {
       schema: {
         operationId: "scrape",
         description: "Scrape a URL",
-        tags: ["actions"],
+        tags: ["Browser Actions"],
         summary: "Scrape a URL",
         body: $ref("ScrapeRequest"),
         response: {
@@ -27,7 +27,7 @@ async function routes(server: FastifyInstance) {
       schema: {
         operationId: "screenshot",
         description: "Take a screenshot",
-        tags: ["actions"],
+        tags: ["Browser Actions"],
         summary: "Take a screenshot",
         body: $ref("ScreenshotRequest"),
         response: {
@@ -44,7 +44,7 @@ async function routes(server: FastifyInstance) {
       schema: {
         operationId: "pdf",
         description: "Get the PDF content of a page",
-        tags: ["actions"],
+        tags: ["Browser Actions"],
         summary: "Get the PDF content of a page",
         body: $ref("PDFRequest"),
         response: {

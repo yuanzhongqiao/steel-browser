@@ -16,10 +16,8 @@ export const handleLaunchBrowserSession = async (
   reply: FastifyReply,
 ) => {
   try {
-    const { proxyUrl, userAgent, sessionContext, extensions, logSinkUrl, timezone, dimensions, isSelenium } =
+    const { sessionId, proxyUrl, userAgent, sessionContext, extensions, logSinkUrl, timezone, dimensions, isSelenium } =
       request.body;
-
-    const sessionId = uuidv4();
 
     if (activeSessions.size > 0) {
       activeSessions.clear();
@@ -62,7 +60,7 @@ export const handleLaunchBrowserSession = async (
         solveCaptcha: false,
         isSelenium,
       };
-      activeSessions.set(sessionId, sessionDetails);
+      activeSessions.set(sessionId || uuidv4(), sessionDetails);
       reply.send(sessionDetails);
     } else {
       await server.cdpService.startNewSession(browserLauncherOptions);
@@ -82,7 +80,7 @@ export const handleLaunchBrowserSession = async (
         solveCaptcha: false,
         isSelenium,
       };
-      activeSessions.set(sessionId, sessionDetails);
+      activeSessions.set(sessionId || uuidv4(), sessionDetails);
       return reply.send(sessionDetails);
     }
   } catch (e: unknown) {

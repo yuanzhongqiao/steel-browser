@@ -2,20 +2,22 @@ import { FastifyRequest } from "fastify";
 import { z } from "zod";
 
 const CreateSession = z.object({
-  proxyUrl: z.string().optional(),
-  userAgent: z.string().optional(),
-  sessionContext: z.record(z.any()).optional(),
-  isSelenium: z.boolean().optional(),
+  sessionId: z.string().uuid().describe("Unique identifier for the session"),
+  proxyUrl: z.string().optional().describe("Proxy URL to use for the session"),
+  userAgent: z.string().optional().describe("User agent string to use for the session"),
+  sessionContext: z.record(z.any()).optional().describe("Session context to use for the session"),
+  isSelenium: z.boolean().optional().describe("Indicates if Selenium is used in the session"),
   // Specific to steel-browser
-  logSinkUrl: z.string().optional(),
-  extensions: z.array(z.string()).optional(),
-  timezone: z.string().optional(),
+  logSinkUrl: z.string().optional().describe("Log sink URL to use for the session"),
+  extensions: z.array(z.string()).optional().describe("Extensions to use for the session"),
+  timezone: z.string().optional().describe("Timezone to use for the session"),
   dimensions: z
     .object({
       width: z.number(),
       height: z.number(),
     })
-    .optional(),
+    .optional()
+    .describe("Dimensions to use for the session"),
 });
 
 const CreateSessionResponse = z.object({
@@ -40,12 +42,9 @@ export type CreateSessionRequest = FastifyRequest<{ Body: CreateSessionBody }>;
 
 export type SessionDetails = z.infer<typeof CreateSessionResponse>;
 
-const NullableRequest = z.object({}).nullable();
-
 export const browserSchemas = {
   CreateSession,
   CreateSessionResponse,
-  NullableRequest,
 };
 
 export default browserSchemas;
