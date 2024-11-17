@@ -1,7 +1,5 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
 import fastifyReplyFrom from "@fastify/reply-from";
-import { LaunchRequest } from "./selenium.schema";
-import { $ref } from "../../plugins/schemas";
 
 async function routes(server: FastifyInstance) {
   server.register(fastifyReplyFrom, {
@@ -55,50 +53,6 @@ async function routes(server: FastifyInstance) {
       },
     });
   });
-
-  server.post(
-    "/selenium/launch",
-    {
-      schema: {
-        operationId: "launch-selenium-session",
-        description: "Launch a new Selenium session",
-        tags: ["selenium"],
-        summary: "Launch a new Selenium session",
-        body: $ref("LaunchRequest"),
-        response: {
-          200: $ref("LaunchResponse"),
-        },
-      },
-    },
-    async (request: FastifyRequest<{ Body: LaunchRequest }>, reply: FastifyReply) => {
-      const options = request.body;
-      await server.cdpService.shutdown();
-      await server.seleniumService.launch(options);
-      reply.send({ success: true });
-    },
-  );
-
-  server.post(
-    "/selenium/close",
-    {
-      schema: {
-        operationId: "close-selenium-session",
-        description: "Close the current Selenium session",
-        tags: ["selenium"],
-        summary: "Close the current Selenium session",
-      },
-    },
-    async (request: FastifyRequest, reply: FastifyReply) => {
-      await server.seleniumService.close();
-      if (server.cdpService.isRunning()) {
-        await server.cdpService.shutdown();
-      }
-      await server.cdpService.launch({
-        options: { headless: false },
-      });
-      reply.send({ success: true });
-    },
-  );
 }
 
 export default routes;
