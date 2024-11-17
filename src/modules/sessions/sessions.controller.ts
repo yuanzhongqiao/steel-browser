@@ -85,9 +85,6 @@ export const handleLaunchBrowserSession = async (
       activeSessions.set(sessionId, sessionDetails);
       return reply.send(sessionDetails);
     }
-
-    // TODO: region, solveCaptcha, and sessionContext are not directly used in BrowserLauncherOptions
-    // Need to handle these separately or extend BrowserLauncherOptions if needed
   } catch (e: unknown) {
     const error = getErrors(e);
     return reply.code(500).send({ success: false, message: error });

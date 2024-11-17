@@ -33,12 +33,6 @@ const CreateSessionResponse = z.object({
   proxy: z.string().optional().describe("Proxy server used for the session"),
   solveCaptcha: z.boolean().optional().describe("Indicates if captcha solving is enabled"),
   isSelenium: z.boolean().optional().describe("Indicates if Selenium is used in the session"),
-
-  // success: z.boolean(),
-  // browserDetails: z.object({
-  //   userAgent: z.string().optional(),
-  //   ipAddress: z.string().optional(),
-  // }),
 });
 
 export type CreateSessionBody = z.infer<typeof CreateSession>;
