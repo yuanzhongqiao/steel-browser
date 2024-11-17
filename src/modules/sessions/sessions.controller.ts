@@ -5,6 +5,7 @@ import { CreateSessionRequest, SessionDetails } from "./sessions.schema";
 import { BrowserLauncherOptions } from "../../types";
 import { SeleniumService } from "../../services/selenium.service";
 import { v4 as uuidv4 } from "uuid";
+import { env } from "../../env";
 
 // Currently only running 1 session at a time
 const activeSessions = new Map<string, SessionDetails>();
@@ -73,9 +74,9 @@ export const handleLaunchBrowserSession = async (
         eventCount: 0,
         timeout: 0,
         creditsUsed: 0,
-        websocketUrl: "ws://0.0.0.0:3000",
-        debugUrl: "http://0.0.0.0:3000/debug",
-        sessionViewerUrl: "http://0.0.0.0:3000",
+        websocketUrl: `ws://${env.HOST}/`,
+        debugUrl: `http://${env.HOST}/debug`,
+        sessionViewerUrl: `http://${env.HOST}`,
         userAgent: server.cdpService.getUserAgent(),
         proxy: proxyUrl,
         solveCaptcha: false,
