@@ -1,4 +1,4 @@
-import puppeteer, { Browser, Page, Target, Cookie, BrowserContext, Protocol } from "puppeteer-core";
+import { Browser, Page, Target, BrowserContext, Protocol } from "puppeteer-core";
 import { Duplex } from "stream";
 import { EventEmitter } from "events";
 import StealthPlugin from "puppeteer-extra-plugin-stealth";
@@ -96,40 +96,57 @@ export class CDPService extends EventEmitter {
       //@ts-ignore
       const pageId = page.target()._targetId;
 
+      await page.setBypassCSP(true);
+
       try {
         if (page.isClosed()) return;
 
         if (this.launchConfig?.logSinkUrl) {
           await page.evaluate(recordScript);
 
-          await page.evaluate(
-            (pageId: string, logSinkUrl: string) => {
+          // Modify the page-side recording to dispatch events instead of making fetch calls
+          await page.evaluate((pageId: string) => {
+            //@ts-ignore
+            if (typeof rrweb !== "undefined" && !window.__rrwebRecordingInitialized) {
               //@ts-ignore
-              if (typeof rrweb !== "undefined" && !window.__rrwebRecordingInitialized) {
-                //@ts-ignore
-                rrweb.record({
-                  emit(event) {
-                    const body = JSON.stringify({
-                      type: "Recording",
-                      text: JSON.stringify({ pageId, event }),
-                      timestamp: new Date().toISOString(),
-                    });
-                    fetch(logSinkUrl, {
-                      method: "POST",
-                      headers: {
-                        "Content-Type": "application/json",
+              rrweb.record({
+                emit(event) {
+                  // Dispatch custom event instead of fetch
+                  window.dispatchEvent(
+                    new CustomEvent("steel-log-event", {
+                      detail: {
+                        type: "Recording",
+                        text: JSON.stringify({ pageId, event }),
+                        timestamp: new Date().toISOString(),
                       },
-                      body,
-                    });
-                  },
-                });
-                //@ts-ignore
-                window.__rrwebRecordingInitialized = true;
-              }
-            },
-            pageId,
-            this.launchConfig?.logSinkUrl,
-          );
+                    }),
+                  );
+                },
+              });
+              //@ts-ignore
+              window.__rrwebRecordingInitialized = true;
+            }
+          }, pageId);
+
+          await page.exposeFunction("handleSteelEvent", (detail: any) => {
+            fetch(this.launchConfig!.logSinkUrl!, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(detail),
+            }).catch((error) => {
+              this.logger.error(`Error sending log event: ${error}`);
+            });
+          });
+
+          // Connect the custom event to our exposed function
+          await page.evaluate(() => {
+            window.addEventListener("steel-log-event", (e: any) => {
+              // @ts-ignore
+              window.handleSteelEvent(e.detail);
+            });
+          });
         }
       } catch (error) {
         this.logger.error(`Error injecting script: ${error}`);
@@ -163,6 +180,7 @@ export class CDPService extends EventEmitter {
       }
 
       const fingerprintInjector = new FingerprintInjector();
+      //@ts-ignore
       await fingerprintInjector.attachFingerprintToPuppeteer(page, this.fingerprintData!);
 
       page.on("error", (err) => {
@@ -250,7 +268,7 @@ export class CDPService extends EventEmitter {
 
       const { width, height } = this.launchConfig?.dimensions || { width: 1920, height: 1080 };
       if (this.launchConfig?.dimensions) {
-        console.log("Setting viewport to", width, height);
+        this.logger.info("Setting viewport to", width, height);
         await page.setViewport({ width, height });
         await (
           await page.createCDPSession()
@@ -400,7 +418,7 @@ export class CDPService extends EventEmitter {
 
     this.logger.info(`Launch Options:`);
     this.logger.info(JSON.stringify(finalLaunchOptions, null, 2));
-    this.browserInstance = (await puppeteerExtra.launch(finalLaunchOptions)) as Browser;
+    this.browserInstance = (await puppeteerExtra.launch(finalLaunchOptions)) as unknown as Browser;
 
     this.browserInstance.on("error", (err) => {
       this.logger.error(`Browser error: ${err}`);

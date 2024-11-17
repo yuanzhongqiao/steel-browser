@@ -4,7 +4,7 @@ import fastifySwagger from "@fastify/swagger";
 import fastifyScalar from "@scalar/fastify-api-reference";
 import { titleCase } from "../utils/text";
 import actionSchemas from "../modules/actions/actions.schema";
-import browserSchemas from "../modules/browser/browser.schema";
+import browserSchemas from "../modules/sessions/sessions.schema";
 import seleniumSchemas from "../modules/selenium/selenium.schema";
 import { buildJsonSchemas } from "../utils/schema";
 import scalarTheme from "./scalar-theme";
@@ -50,7 +50,7 @@ const schemaPlugin: FastifyPluginAsync = async (fastify) => {
   await fastify.register(fastifyScalar, {
     routePrefix: "/documentation",
     configuration: {
-      customCss: scalarTheme
+      customCss: scalarTheme,
     },
   });
 };

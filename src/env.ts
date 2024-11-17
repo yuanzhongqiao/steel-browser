@@ -4,6 +4,7 @@ import { config } from "dotenv";
 config();
 
 const envSchema = z.object({
+  HOST: z.string().optional().default("0.0.0.0:3000"),
   PROXY_URL: z.string().optional(),
   DEFAULT_HEADERS: z
     .string()
