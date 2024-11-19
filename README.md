@@ -1,25 +1,78 @@
-<p align="center">
-  <a href="https://steel.dev"><img src="https://api.scalar.com/cdn/images/jBw8j7D0nDuWr2AD2vuO5/D-Yt182xdIQAAQph6XjuT.png" alt="Steel logo" width="100%"></a>
-</p>
+<br /><br />
 
 <p align="center">
-    <b>Steel Browser - the open-source browser for agents</b>. <br />
+<a href="https://steel.dev">
+  <img src="images/steel_header_logo.png" alt="Steel Logo" width="200">
+</a>
+</p>
+
+<h3 align="center"><b>Steel</b></h3>
+<p align="center">
+    <b>the open-source browser API for AI agents & apps</b>. <br />
     The best way to build live web agents and browser automation tools.
 </p>
 
 <p align="center">
-  <a href="https://github.com/chroma-core/chroma/blob/master/LICENSE" target="_blank">
-      <img src="https://img.shields.io/static/v1?label=license&message=Apache%202.0&color=white" alt="License">
-  </a> |
-  <a href="https://steel.dev/" target="_blank">
-      Docs
-  </a> |
-  <a href="https://steel.dev/" target="_blank">
-      Homepage
+  <a href="https://github.com/steel-dev/steel-browser/commits/main" target="_blank">
+      <img src="https://img.shields.io/github/commit-activity/m/steel-dev/steel-browser?color=yellow" alt="Commit Activity">
+  </a>
+  <a href="https://github.com/steel-dev/steel-browser/blob/main/LICENSE" target="_blank">
+      <img src="https://img.shields.io/github/license/steel-dev/steel-browser?color=yellow" alt="License">
+  </a>
+  <a href="https://discord.gg/gPpvhNvc5R" target="_blank">
+      <img src="https://discordapp.com/api/guilds/1285696350117167226/widget.png?style=shield" alt="Discord">
+  </a>
+  <a href="https://twitter.com/steel_dev" target="_blank">
+      <img src="https://img.shields.io/twitter/follow/steeldotdev?style=social" alt="Twitter Follow">
+  </a>
+  <a href="https://github.com/steel-dev/steel-browser" target="_blank">
+      <img src="https://img.shields.io/github/stars/steel-dev/steel-browser?style=social" alt="GitHub stars">
   </a>
 </p>
 
-## Features
+<h4 align="center">
+    <a href="https://app.steel.dev/sign-up" target="_blank">
+      Get Started
+  </a>  ·
+    <a href="https://docs.steel.dev/" target="_blank">
+      Documentation
+  </a>  ·
+  <a href="https://steel.dev/" target="_blank">
+      Website
+  </a> ·
+  <a href="https://docs.steel.dev/" target="_blank">
+      Cookbook
+  </a>
+</h4>
+
+<p align="center">
+  <img src="images/demo.gif" alt="Steel Demo" width="600">
+</p>
+
+[Steel](https://steel.dev) is an open-source browser API. We make it easy for AI devs to programmatically control browser that work with your favorite frameworks.
+
+> Steel is in public beta and evolving every day. Your suggestions, ideas, and reported bugs help us immensely. Do not hesitate to join in the conversation on [Discord](https://discord.gg/gPpvhNvc5R) or raise a GitHub issue. We read everything and respond to most.
+
+
+
+## ⚡ Installation
+
+The easiest way to get started with Steel is by creating a [Steel Cloud](https://app.steel.dev) account.
+
+If you would like to self-host Steel, please see our [deployment guide](https://docs.plane.so/docker-compose).
+
+| Installation methods | Link                                                                                                                                          |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Run locally with GHCR | [![Deploy with Github Container Redistry](https://img.shields.io/badge/GHCR-478CFF?style=for-the-badge&labelColor=478CFF&logo=github&logoColor=white)](https://github.com/steel-dev/steel-browser/pkgs/container/steel-browser) |
+| 1-click deploy to Railway | [![Deploy on Railway](https://img.shields.io/badge/Railway-B039CB?style=for-the-badge&labelColor=B039CB&logo=railway&logoColor=white)](https://railway.app/template/oPvZmg?referralCode=Jwc4kg) |
+| 1-click deploy to Render | [![Deploy to Render](https://img.shields.io/badge/Render-8A05FF?style=for-the-badge&labelColor=8A05FF&logo=render&logoColor=white)](https://render.com/deploy) |
+
+
+
+
+`Instance admins` can configure instance settings with [God-mode](https://docs.plane.so/instance-admin).
+
+## ✨ Highlights 
 
 The Steel browser provides a REST API to control a headless browser powered by Puppeteer. Under the hood, it manages browser instances, sessions, and pages, allowing you to perform complex browsing tasks programmatically without any of the headaches:
 
@@ -36,13 +89,14 @@ For detailed API documentation and examples, check out our [API reference](https
 
 
 
-### Getting Started
+## Getting Started
+
 The fastest way to get started is to build and run the Docker image:
 
 ```bash
 # Clone and build the Docker image
-git clone https://github.com/steel-dev/browser
-cd browser
+git clone https://github.com/steel-dev/steel-browser
+cd steel-browser
 docker build -t steel .
 
 # On an M chip Mac, you may need to run `docker build --platform linux/amd64 .`
