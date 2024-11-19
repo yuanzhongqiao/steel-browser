@@ -2,7 +2,7 @@
 
 <p align="center">
 <a href="https://steel.dev">
-  <img src="images/steel_header_logo.png" alt="Steel Logo" width="200">
+  <img src="images/steel_header_logo.png" alt="Steel Logo" width="100">
 </a>
 </p>
 
