@@ -1,5 +1,4 @@
-<br /><br />
-
+<br />
 <p align="center">
 <a href="https://steel.dev">
   <img src="images/steel_header_logo.png" alt="Steel Logo" width="100">
