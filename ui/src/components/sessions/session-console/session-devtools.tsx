@@ -1,5 +1,3 @@
-// import { useSessionsContext } from "@/hooks/use-sessions-context";
-
 import { useEffect, useState } from "react";
 
 export default function SessionDevTools() {
