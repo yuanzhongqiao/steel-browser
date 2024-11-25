@@ -421,7 +421,7 @@ export class CDPService extends EventEmitter {
       ? [`--load-extension=${extensionPaths.join(",")}`, `--disable-extensions-except=${extensionPaths.join(",")}`]
       : [];
 
-    const timezone = "America/Toronto"; // Default timezone, can be customized
+    const timezone = "America/New_York"; // Default timezone, can be customized
 
     const launchArgs = [
       "--remote-allow-origins=*",
