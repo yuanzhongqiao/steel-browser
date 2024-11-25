@@ -58,7 +58,7 @@ COPY --from=patcher /app /app
 COPY entrypoint.sh /app/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh
 
-# Expose ports for both services
+# Expose ports for all services
 EXPOSE 3000
 EXPOSE 3001
 EXPOSE 5173
