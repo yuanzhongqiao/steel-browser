@@ -438,7 +438,7 @@ export class CDPService extends EventEmitter {
       `--window-size=${this.launchConfig.dimensions?.width ?? 1920},${this.launchConfig.dimensions?.height ?? 1080}`,
       `--timezone=${timezone}`,
       userAgent ? `--user-agent=${userAgent}` : "",
-      // proxyUrl ? `--proxy-server=${proxyUrl}` : "",
+      proxyUrl ? `--proxy-server=${proxyUrl}` : "",
       ...extensionArgs,
       ...(options.args || []),
     ].filter(Boolean);
