@@ -9,17 +9,6 @@ type SessionViewerProps = {
   id: string;
   showConsole?: boolean;
   setMostRecentUrl: (url: string) => void;
-  // className?: string;
-  // style?: React.CSSProperties;
-  // onError?: (error: Error) => void;
-  // onLoaded?: () => void;
-  // onPlay?: () => void;
-  // onPause?: () => void;
-  // onSeek?: (time: number) => void;
-  // onTimeUpdate?: (time: number) => void;
-  // onVolumeChange?: (volume: number) => void;
-  // onFullscreenChange?: (fullscreen: boolean) => void;
-  // onPlaybackRateChange?: (playbackRate: number) => void;
 };
 
 export function SessionViewer({
@@ -171,7 +160,6 @@ export function SessionViewer({
       className="flex flex-col w-full flex-1 border-t border-[var(--gray-6)]"
     >
       {!hasEvents && isLive && <LiveEmptyState session={session!} />}
-      {/* {!isEventsLoading && !hasEvents && !isLive && <EmptyState />} */}
     </div>
   );
 }

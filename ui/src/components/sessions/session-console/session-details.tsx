@@ -60,11 +60,6 @@ export default function SessionDetails({ id }: { id: string | null }) {
             <div className="text-right">{session.duration}</div>
           </div>
 
-          {/* <div className="flex w-full flex-row gap-2 justify-between py-2 border-b border-[var(--gray-6)]">
-            <div className="text-[var(--gray-11)]">IP Proxy</div>
-            <div className="text-right">{session.proxy}</div>
-          </div> */}
-
           <div className="flex w-full flex-row gap-2 justify-between py-2 border-b border-[var(--gray-6)]">
             <div className="text-[var(--gray-11)]">User Agent</div>
             <div className="text-right">{session.userAgent}</div>

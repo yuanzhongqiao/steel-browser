@@ -1,9 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 
 export default function SessionLogs({ id }: { id: string }) {
-  // const { useSessionLogs } = useSessionsContext();
   const [logs, setLogs] = useState<any[]>([]);
-  // const { data: storedLogs, isLoading, isError } = useSessionLogs(id);
   const consoleRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const connectWebSocket = async () => {

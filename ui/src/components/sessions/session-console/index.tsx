@@ -38,8 +38,6 @@ export default function SessionConsole({ id }: SessionConsoleProps) {
                 {tab.label}
               </TabsTrigger>
             ))}
-
-            {/* <TabsTrigger value="dev-tools">Dev Tools</TabsTrigger> */}
           </TabsList>
         </Tabs>
       </div>
