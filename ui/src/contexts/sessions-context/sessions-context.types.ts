@@ -17,12 +17,6 @@ export type SessionsContextType = {
   useSession: (
     id: string
   ) => UseQueryResult<GetSessionDetailsResponse | null, GetSessionDetailsError>;
-  // useSessionLogs: (
-  //   id: string
-  // ) => UseQueryResult<GetSessionLogsResponse, ErrorResponse>;
-  // useSessionEvents: (
-  //   id: string
-  // ) => UseQueryResult<GetSessionEventsResponse, ErrorResponse>;
 };
 
 export type SessionsProviderProps = {

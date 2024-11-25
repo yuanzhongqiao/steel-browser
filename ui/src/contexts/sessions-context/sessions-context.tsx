@@ -81,9 +81,6 @@ export function SessionsProvider({
   const contextValue = {
     currentSession,
     useSession,
-    // useSessionLogs,
-    // useSessionEvents,
-    // useCreateSessionMutation,
     useReleaseSessionMutation,
   };
 
