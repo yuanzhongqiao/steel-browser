@@ -79,7 +79,7 @@ The Steel browser provides a REST API to control a headless browser powered by P
 - **Resource Management**: Automatic cleanup and browser lifecycle management
 
 
-For detailed API documentation and examples, check out our [API reference](https://steel.dev/api) or explore the Swagger UI directly at `http://localhost:3000/documentation`.
+For detailed API documentation and examples, check out our [API reference](https://docs.steel.dev/api-reference) or explore the Swagger UI directly at `http://localhost:3000/documentation`.
 
 
 
