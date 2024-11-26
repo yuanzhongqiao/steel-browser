@@ -11,12 +11,3 @@ services:
       name: cache
       mountPath: /app/.cache
       sizeGB: 1
-    ports:
-      - port: 3000
-        protocol: TCP
-      - port: 3001
-        protocol: TCP
-      - port: 5173
-        protocol: TCP
-      - port: 9223
-        protocol: TCP 

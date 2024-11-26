@@ -34,7 +34,7 @@ const schemaPlugin: FastifyPluginAsync = async (fastify) => {
       },
       servers: [
         {
-          url: `http://${env.HOST}`,
+          url: `http://${env.DOMAIN ?? `${env.HOST}:${env.PORT}`}`,
           description: "Local server",
         },
       ],
