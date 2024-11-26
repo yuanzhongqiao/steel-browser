@@ -58,13 +58,11 @@
 
 The easiest way to get started with Steel is by creating a [Steel Cloud](https://app.steel.dev) account.
 
-If you would like to self-host Steel, please see our [deployment guide](https://docs.steel.dev/docker-compose).
-
 | Installation methods | Link                                                                                                                                          |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Run locally with GHCR | [![Deploy with Github Container Redistry](https://img.shields.io/badge/GHCR-478CFF?style=for-the-badge&labelColor=478CFF&logo=github&logoColor=white)](https://github.com/steel-dev/steel-browser/pkgs/container/steel-browser) |
-| 1-click deploy to Railway | [![Deploy on Railway](https://img.shields.io/badge/Railway-B039CB?style=for-the-badge&labelColor=B039CB&logo=railway&logoColor=white)](https://railway.app/template/oPvZmg?referralCode=Jwc4kg) |
-| 1-click deploy to Render | [![Deploy to Render](https://img.shields.io/badge/Render-8A05FF?style=for-the-badge&labelColor=8A05FF&logo=render&logoColor=white)](https://render.com/deploy) |
+| 1-click deploy to Railway | [![Deploy on Railway](https://img.shields.io/badge/Railway-B039CB?style=for-the-badge&labelColor=B039CB&logo=railway&logoColor=white)](https://railway.app/template/FQG9Ca) |
+| 1-click deploy to Render | [![Deploy to Render](https://img.shields.io/badge/Render-8A05FF?style=for-the-badge&labelColor=8A05FF&logo=render&logoColor=white)](https://render.com/deploy?repo=https://github.com/steel-dev/steel-browser) |
 
 
 
@@ -95,10 +93,8 @@ git clone https://github.com/steel-dev/steel-browser
 cd steel-browser
 docker build -t steel .
 
-# On an M chip Mac, you may need to run `docker build --platform linux/amd64 .`
-
 # Run the server
-docker run -p 3000:3000 steel
+docker run -p 3000:3000 -p 5173:5173 -p 9223:9223 steel
 ```
 
 Alternatively, if you have Node.js and Chrome installed, you can run the server directly:
