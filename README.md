@@ -7,7 +7,7 @@
 
 <h3 align="center"><b>Steel</b></h3>
 <p align="center">
-    <b>the open-source browser API for AI agents & apps</b>. <br />
+    <b>The open-source browser API for AI agents & apps</b>. <br />
     The best way to build live web agents and browser automation tools.
 </p>
 
@@ -22,10 +22,10 @@
       <img src="https://discordapp.com/api/guilds/1285696350117167226/widget.png?style=shield" alt="Discord">
   </a>
   <a href="https://twitter.com/steel_dev" target="_blank">
-      <img src="https://img.shields.io/twitter/follow/steeldotdev?style=social" alt="Twitter Follow">
+      <img src="https://img.shields.io/twitter/follow/steeldotdev?style=flat" alt="Twitter Follow">
   </a>
   <a href="https://github.com/steel-dev/steel-browser" target="_blank">
-      <img src="https://img.shields.io/github/stars/steel-dev/steel-browser?style=social" alt="GitHub stars">
+      <img src="https://img.shields.io/github/stars/steel-dev/steel-browser?style=flat" alt="GitHub stars">
   </a>
 </p>
 
@@ -39,7 +39,7 @@
   <a href="https://steel.dev/" target="_blank">
       Website
   </a> ·
-  <a href="https://docs.steel.dev/" target="_blank">
+  <a href="https://github.com/steel-dev/steel-cookbook" target="_blank">
       Cookbook
   </a>
 </h4>
@@ -67,9 +67,6 @@ If you would like to self-host Steel, please see our [deployment guide](https://
 | 1-click deploy to Render | [![Deploy to Render](https://img.shields.io/badge/Render-8A05FF?style=for-the-badge&labelColor=8A05FF&logo=render&logoColor=white)](https://render.com/deploy) |
 
 
-
-
-`Instance admins` can configure instance settings with [God-mode](https://docs.plane.so/instance-admin).
 
 ## ✨ Highlights 
 
