@@ -2,10 +2,8 @@
 
 set -e  # Exit on error
 
-export VITE_API_URL=http://localhost:3000
-export VITE_WS_URL=ws://localhost:3000
-export VITE_OPENAPI_URL=http://localhost:3000/documentation/json
-export CDP_PORT=9223
+export CDP_REDIRECT_PORT=9223
+export HOST=0.0.0.0
 
 echo "Starting Xvfb..."
 Xvfb :10 -screen 0 1920x1080x24 &

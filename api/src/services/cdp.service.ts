@@ -77,7 +77,7 @@ export class CDPService extends EventEmitter {
   }
 
   public getDebuggerUrl() {
-    return `http://localhost:${env.CDP_PORT}/devtools/devtools_app.html`;
+    return `http://localhost:${env.CDP_REDIRECT_PORT}/devtools/devtools_app.html`;
   }
 
   public customEmit(event: EmitEvent, payload: any) {
@@ -92,7 +92,7 @@ export class CDPService extends EventEmitter {
   }
 
   public getDebuggerWsUrl(pageId?: string) {
-    return `ws://localhost:${env.CDP_PORT}/devtools/page/${pageId ?? this.getTargetId(this.primaryPage!)}`;
+    return `ws://localhost:${env.CDP_REDIRECT_PORT}/devtools/page/${pageId ?? this.getTargetId(this.primaryPage!)}`;
   }
 
   public async refreshPrimaryPage() {

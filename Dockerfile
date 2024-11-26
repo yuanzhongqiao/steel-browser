@@ -26,6 +26,10 @@ RUN npm install --include=dev
 RUN cd api && npm ci --include=dev
 RUN cd ui && npm ci --include=dev
 
+ARG VITE_API_URL=http://localhost:3000
+ARG VITE_WS_URL=ws://localhost:3000
+ARG VITE_OPENAPI_URL=http://localhost:3000/documentation/json
+
 # Build both applications
 RUN npm run build
 
