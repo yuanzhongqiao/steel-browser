@@ -21,7 +21,7 @@
   <a href="https://discord.gg/gPpvhNvc5R" target="_blank">
       <img src="https://discordapp.com/api/guilds/1285696350117167226/widget.png?style=shield" alt="Discord">
   </a>
-  <a href="https://twitter.com/steel_dev" target="_blank">
+  <a href="https://twitter.com/steeldotdev" target="_blank">
       <img src="https://img.shields.io/twitter/follow/steeldotdev?style=flat" alt="Twitter Follow">
   </a>
   <a href="https://github.com/steel-dev/steel-browser" target="_blank">
@@ -48,7 +48,7 @@
   <img src="images/demo.gif" alt="Steel Demo" width="600">
 </p>
 
-[Steel](https://steel.dev) is an open-source browser API. We make it easy for AI devs to programmatically control browser that work with your favorite frameworks.
+[Steel](https://steel.dev) is an open-source browser API. We make it easy for AI devs to programmatically control browsers that work with your favorite frameworks.
 
 > Steel is in public beta and evolving every day. Your suggestions, ideas, and reported bugs help us immensely. Do not hesitate to join in the conversation on [Discord](https://discord.gg/gPpvhNvc5R) or raise a GitHub issue. We read everything and respond to most.
 
@@ -58,7 +58,7 @@
 
 The easiest way to get started with Steel is by creating a [Steel Cloud](https://app.steel.dev) account.
 
-If you would like to self-host Steel, please see our [deployment guide](https://docs.plane.so/docker-compose).
+If you would like to self-host Steel, please see our [deployment guide](https://docs.steel.dev/docker-compose).
 
 | Installation methods | Link                                                                                                                                          |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -125,8 +125,10 @@ Make sure you have the Chrome executable installed and in one of these paths:
 
 For more details on where this is checked look at [`src/server/utils/browser.ts`](./src/server/utils/browser.ts).
 
-## How It Works
+## Usage
 The Steel browser provides a REST API to control a headless browser powered by Puppeteer. Under the hood, it manages browser instances, sessions, and pages, allowing you to perform complex browsing tasks programmatically.
+
+The full REST API documentation can be found on your Steel instance at `/documentation` (e.g., `http://localhost:3000/documentation`).
 
 Steel provides three main ways to let your agents do browser automation:
 
@@ -206,34 +208,10 @@ await driver.get("https://www.google.com");
 // The rest of your Selenium code here...
 ```
 
-## Use Case: LLMs Interacting with the Web
-
-The browser is designed for AI agents that need to interact with the web. Whether you're building an AI that gathers information, automates tasks, or analyzes web content, Steel provides the tools to navigate and manipulate web pages programmatically.
-
-
-### Example: AI-Powered Web Scraping
-
-An AI agent can use the Steel browser to scrape dynamic content from web pages, even those requiring JavaScript execution. With Steel's simple API, the agent can:
-
-- Navigate to a target URL
-- Execute arbitrary JavaScript to interact with page elements
-- Extract information from the page in a variety of formats (HTML, JSON, PDF, etc.)
-
-
-### Example: Automated Form Submission
-
-
-1. **Launch a Browser Session**: Start a new browser session to maintain state.
-2. **Navigate to the Form Page**: Using Puppeteer or Playwright, navigate to the form page.
-3. **Fill Out the Form**: Programmatically interact with form elements.
-4. **Submit the Form**: Trigger form submission and handle the response.
-
 ## Get involved
 The Steel browser is an open-source project, and we welcome contributions!
-- [Join the conversation on Discord](https://discord.gg/gPpvhNvc5R) - `#contributing` channel
-- [Review the 🛣️ Roadmap and contribute your ideas](https://steel.dev/roadmap)
-- [Grab an issue and open a PR](https://github.com/steel-dev/browser) - [`Good first issue tag`](https://github.com/steel-dev/browser/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
-- [Read our contributing guide](https://steel.dev/contributing)
+- Questions/ideas/feedback? Come hangout on [Discord](https://discord.gg/gPpvhNvc5R)
+- Found a bug? Open an issue on [GitHub](https://github.com/steel-dev/steel-browser/issues)
 
 ## License
 [Apache 2.0](./LICENSE)
