@@ -79,7 +79,7 @@ The Steel browser provides a REST API to control a headless browser powered by P
 - **Resource Management**: Automatic cleanup and browser lifecycle management
 
 
-For detailed API documentation and examples, check out our [API reference](https://docs.steel.dev/api-reference) or explore the Swagger UI directly at `http://localhost:3000/documentation`.
+For detailed API documentation and examples, check out our [API reference](https://docs.steel.dev/api-reference) or explore the Swagger UI directly at `http://0.0.0.0:3000/documentation`.
 
 
 
@@ -124,7 +124,7 @@ For more details on where this is checked look at [`src/server/utils/browser.ts`
 ## Usage
 The Steel browser provides a REST API to control a headless browser powered by Puppeteer. Under the hood, it manages browser instances, sessions, and pages, allowing you to perform complex browsing tasks programmatically.
 
-The full REST API documentation can be found on your Steel instance at `/documentation` (e.g., `http://localhost:3000/documentation`).
+The full REST API documentation can be found on your Steel instance at `/documentation` (e.g., `http://0.0.0.0:3000/documentation`).
 
 Steel provides three main ways to let your agents do browser automation:
 
@@ -135,7 +135,7 @@ The `/scrape`, `/screenshot`, and `/pdf` endpoints let you quickly extract clean
 Extract the HTML content of a web page.
 ```bash
 # Example using the Actions API
-curl -X POST http://localhost:3000/scrape \
+curl -X POST http://0.0.0.0:3000/v1/scrape \
   -H "Content-Type: application/json" \
   -d '{
     "url": "https://example.com",
@@ -147,7 +147,7 @@ curl -X POST http://localhost:3000/scrape \
 Take a screenshot of a web page.
 ```bash
 # Example using the Actions API
-curl -X POST http://localhost:3000/screenshot \
+curl -X POST http://0.0.0.0:3000/v1/screenshot \
   -H "Content-Type: application/json" \
   -d '{
     "url": "https://example.com",
@@ -160,7 +160,7 @@ The Browser Sessions API lets you relaunch the browser with custom options or ex
 
 ```bash
 # Launch a new browser session
-curl -X POST http://localhost:3000/launch-browser \
+curl -X POST http://0.0.0.0:3000/v1/launch-browser \
   -H "Content-Type: application/json" \
   -d '{
     "options": {
@@ -177,7 +177,7 @@ For teams with existing Selenium workflows, the Steel browser provides a drop-in
 
 ```bash
 # Launch a Selenium session
-curl -X POST http://localhost:3000/selenium/launch \
+curl -X POST http://0.0.0.0:3000/v1/selenium/launch \
   -H "Content-Type: application/json" \
   -d '{
     "options": {
@@ -193,7 +193,7 @@ The Selenium API is fully compatible with Selenium's WebDriver protocol, so you 
 const builder = new Builder()
       .forBrowser("chrome")
       .usingServer(
-        `http://localhost:3000/selenium`
+        `http://0.0.0.0:3000/selenium`
       );
 
 const driver = await builder.build();
