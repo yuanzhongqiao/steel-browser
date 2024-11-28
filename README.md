@@ -160,7 +160,7 @@ The Browser Sessions API lets you relaunch the browser with custom options or ex
 
 ```bash
 # Launch a new browser session
-curl -X POST http://0.0.0.0:3000/v1/launch-browser \
+curl -X POST http://0.0.0.0:3000/v1/sessions \
   -H "Content-Type: application/json" \
   -d '{
     "options": {
