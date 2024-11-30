@@ -72,7 +72,7 @@ The easiest way to get started with Steel is by creating a [Steel Cloud](https:/
 
 ## ✨ Highlights 
 
-The Steel browser provides a REST API to control, run, and manage a production-ready browser environment. Under the hood, it manages browser instances, sessions, and pages, allowing you to perform complex browsing tasks programmatically without any of the headaches:
+The `steel-browser` provides a REST API to control, run, and manage a production-ready browser environment. Under the hood, it manages browser instances, sessions, and pages, allowing you to perform complex browsing tasks programmatically without any of the headaches:
 - **Full Browser Control**: Uses Puppeteer and CDP for complete control over Chrome instances -- allowing you to connect using Puppeteer, Playwright, or Selenium.
 - **Session Management**: Maintains browser state, cookies, and local storage across requests
 - **Proxy Support**: Built-in proxy chain management for IP rotation
@@ -84,6 +84,9 @@ The Steel browser provides a REST API to control, run, and manage a production-r
 
 
 For detailed API documentation and examples, check out our [API reference](https://docs.steel.dev/api-reference) or explore the Swagger UI directly at `http://0.0.0.0:3000/documentation`.
+
+Make sure to give us a star!
+
 
 
 
