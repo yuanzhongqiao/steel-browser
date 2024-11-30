@@ -5,6 +5,8 @@
 </a>
 </p>
 
+
+
 <h3 align="center"><b>Steel</b></h3>
 <p align="center">
     <b>The open-source browser API for AI agents & apps.</b> <br />
@@ -13,11 +15,11 @@
 
 <div align="center">
   
-[![Commit Activity](https://img.shields.io/github/commit-activity/m/steel-dev/steel-browser?color=yellow&style=for-the-badge)](https://github.com/steel-dev/steel-browser/commits/main)
-[![License](https://img.shields.io/github/license/steel-dev/steel-browser?color=yellow&style=for-the-badge)](https://github.com/steel-dev/steel-browser/blob/main/LICENSE)
-[![Discord](https://img.shields.io/discord/1285696350117167226?style=for-the-badge)](https://discord.gg/gPpvhNvc5R)
-[![Twitter Follow](https://img.shields.io/twitter/follow/steeldotdev?style=for-the-badge)](https://twitter.com/steeldotdev)
-[![GitHub stars](https://img.shields.io/github/stars/steel-dev/steel-browser?style=for-the-badge)](https://github.com/steel-dev/steel-browser)
+[![Commit Activity](https://img.shields.io/github/commit-activity/m/steel-dev/steel-browser?color=yellow)](https://github.com/steel-dev/steel-browser/commits/main)
+[![License](https://img.shields.io/github/license/steel-dev/steel-browser?color=yellow)](https://github.com/steel-dev/steel-browser/blob/main/LICENSE)
+[![Discord](https://img.shields.io/discord/1285696350117167226?label=discord)](https://discord.gg/gPpvhNvc5R)
+[![Twitter Follow](https://img.shields.io/twitter/follow/steeldotdev)](https://twitter.com/steeldotdev)
+[![GitHub stars](https://img.shields.io/github/stars/steel-dev/steel-browser)](https://github.com/steel-dev/steel-browser)
 
 </div>
 
