@@ -7,7 +7,7 @@
 
 <h3 align="center"><b>Steel</b></h3>
 <p align="center">
-    <b>The open-source browser API for AI agents & apps</b>. <br />
+    <b>The open-source browser API for AI agents & apps.</b> <br />
     The best way to build live web agents and browser automation tools.
 </p>
 
@@ -48,15 +48,19 @@
   <img src="images/demo.gif" alt="Steel Demo" width="600">
 </p>
 
-[Steel](https://steel.dev) is an open-source browser API. We make it easy for AI devs to programmatically control browsers that work with your favorite frameworks.
+[Steel.dev](https://steel.dev) is an open-source browser API that makes it easy to build AI apps and agents that interact with the web. Instead of building automation infrastructure from scratch, you can focus on your AI application while Steel handles the complexity.
 
-> Steel is in public beta and evolving every day. Your suggestions, ideas, and reported bugs help us immensely. Do not hesitate to join in the conversation on [Discord](https://discord.gg/gPpvhNvc5R) or raise a GitHub issue. We read everything and respond to most.
+**This repo is core building block behind Steel - a production-ready, containerized browser sandbox that you can deploy anywhere.** It includes built-in stealth capabilities, text-to-markdown session management, UI to view/debug sessions, and full browser control through standard automation frameworks like Puppeteer, Playwright, and Selenium 🔥
+
+> Steel is in public beta and evolving every day. Your suggestions, ideas, and reported bugs help us immensely. Do not hesitate to join in the conversation on [Discord](https://discord.gg/gPpvhNvc5R) or raise a GitHub issue. We read everything, respond to most, and love you.
 
 
 
 ## ⚡ Installation
 
 The easiest way to get started with Steel is by creating a [Steel Cloud](https://app.steel.dev) account.
+
+
 
 | Installation methods | Link                                                                                                                                          |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -68,8 +72,7 @@ The easiest way to get started with Steel is by creating a [Steel Cloud](https:/
 
 ## ✨ Highlights 
 
-The Steel browser provides a REST API to control a headless browser powered by Puppeteer. Under the hood, it manages browser instances, sessions, and pages, allowing you to perform complex browsing tasks programmatically without any of the headaches:
-
+The Steel browser provides a REST API to control, run, and manage a production-ready browser environment. Under the hood, it manages browser instances, sessions, and pages, allowing you to perform complex browsing tasks programmatically without any of the headaches:
 - **Full Browser Control**: Uses Puppeteer and CDP for complete control over Chrome instances -- allowing you to connect using Puppeteer, Playwright, or Selenium.
 - **Session Management**: Maintains browser state, cookies, and local storage across requests
 - **Proxy Support**: Built-in proxy chain management for IP rotation
@@ -77,6 +80,7 @@ The Steel browser provides a REST API to control a headless browser powered by P
 - **Debugging Tools**: Built-in request logging and session recording capabilities
 - **Anti-Detection**: Includes stealth plugins and fingerprint management
 - **Resource Management**: Automatic cleanup and browser lifecycle management
+- **Browser Tools**: Exposes APIs to quick convert pages to markdown, readability, screenshots, or PDFs.
 
 
 For detailed API documentation and examples, check out our [API reference](https://docs.steel.dev/api-reference) or explore the Swagger UI directly at `http://0.0.0.0:3000/documentation`.
