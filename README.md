@@ -11,23 +11,15 @@
     The best way to build live web agents and browser automation tools.
 </p>
 
-<p align="center">
-  <a href="https://github.com/steel-dev/steel-browser/commits/main" target="_blank">
-      <img src="https://img.shields.io/github/commit-activity/m/steel-dev/steel-browser?color=yellow" alt="Commit Activity">
-  </a>
-  <a href="https://github.com/steel-dev/steel-browser/blob/main/LICENSE" target="_blank">
-      <img src="https://img.shields.io/github/license/steel-dev/steel-browser?color=yellow" alt="License">
-  </a>
-  <a href="https://discord.gg/gPpvhNvc5R" target="_blank">
-      <img src="https://discordapp.com/api/guilds/1285696350117167226/widget.png?style=shield" alt="Discord">
-  </a>
-  <a href="https://twitter.com/steeldotdev" target="_blank">
-      <img src="https://img.shields.io/twitter/follow/steeldotdev?style=flat" alt="Twitter Follow">
-  </a>
-  <a href="https://github.com/steel-dev/steel-browser" target="_blank">
-      <img src="https://img.shields.io/github/stars/steel-dev/steel-browser?style=flat" alt="GitHub stars">
-  </a>
-</p>
+<div align="center">
+  
+[![Commit Activity](https://img.shields.io/github/commit-activity/m/steel-dev/steel-browser?color=yellow&style=for-the-badge)](https://github.com/steel-dev/steel-browser/commits/main)
+[![License](https://img.shields.io/github/license/steel-dev/steel-browser?color=yellow&style=for-the-badge)](https://github.com/steel-dev/steel-browser/blob/main/LICENSE)
+[![Discord](https://img.shields.io/discord/1285696350117167226?style=for-the-badge)](https://discord.gg/gPpvhNvc5R)
+[![Twitter Follow](https://img.shields.io/twitter/follow/steeldotdev?style=for-the-badge)](https://twitter.com/steeldotdev)
+[![GitHub stars](https://img.shields.io/github/stars/steel-dev/steel-browser?style=for-the-badge)](https://github.com/steel-dev/steel-browser)
+
+</div>
 
 <h4 align="center">
     <a href="https://app.steel.dev/sign-up" target="_blank">
