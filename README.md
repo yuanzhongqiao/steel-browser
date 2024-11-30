@@ -85,8 +85,10 @@ The `steel-browser` provides a REST API to control, run, and manage a production
 
 For detailed API documentation and examples, check out our [API reference](https://docs.steel.dev/api-reference) or explore the Swagger UI directly at `http://0.0.0.0:3000/documentation`.
 
-Make sure to give us a star!
 
+### Make sure to give us a star ⭐
+
+<img width="200" alt="Start us on Github!" src="images/star_img.png">
 
 
 
