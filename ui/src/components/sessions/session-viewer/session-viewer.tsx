@@ -106,13 +106,10 @@ export function SessionViewer({
             const events = JSON.parse(message.data);
             if (playerRef.current) {
               events.forEach((event) => {
-                playerRef.current!.addEvent(event.event);
+                playerRef.current!.addEvent(event);
               });
             } else {
-              setEvents((prevEvents) => [
-                ...prevEvents,
-                ...events.map((event) => event.event),
-              ]);
+              setEvents((prevEvents) => [...prevEvents, ...events]);
             }
           };
 
