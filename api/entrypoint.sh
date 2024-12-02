@@ -1,11 +1,24 @@
 #!/bin/sh
 
-echo "Starting nginx..."
-nginx -c /app/nginx.conf
-# Check if nginx started successfully
-if ! ps aux | grep nginx | grep -v grep > /dev/null; then
-    echo "Failed to start nginx"
-    exit 1
+# Check for --no-nginx flag
+START_NGINX=true
+for arg in "$@"; do
+    if [ "$arg" = "--no-nginx" ]; then
+        START_NGINX=false
+        break
+    fi
+done
+
+if $START_NGINX; then
+    echo "Starting nginx..."
+    nginx -c /app/nginx.conf
+    # Check if nginx started successfully
+    if ! ps aux | grep nginx | grep -v grep > /dev/null; then
+        echo "Failed to start nginx"
+        exit 1
+    fi
+else
+    echo "Skipping nginx startup..."
 fi
 
 # Create dbus directory and start daemon
