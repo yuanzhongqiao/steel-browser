@@ -11,6 +11,8 @@ ENV PATH="/usr/bin:/app/selenium/driver:${PATH}"
 ENV CHROME_BIN=/usr/bin/google-chrome-stable
 ENV CHROME_PATH=/usr/bin/google-chrome-stable
 
+LABEL org.opencontainers.image.source="https://github.com/steel-dev/steel-browser"
+
 FROM base AS build
 
 RUN apt-get update -qq && \

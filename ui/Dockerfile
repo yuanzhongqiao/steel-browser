@@ -6,6 +6,8 @@ ARG VITE_API_URL=http://localhost:3000
 ARG VITE_WS_URL=ws://localhost:3000
 ARG VITE_OPENAPI_URL=http://localhost:3000/documentation/json
 
+LABEL org.opencontainers.image.source="https://github.com/steel-dev/steel-browser"
+
 # Copy package.json and package-lock.json first
 COPY package.json package-lock.json ./
 
