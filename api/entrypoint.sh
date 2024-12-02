@@ -30,4 +30,4 @@ export CDP_REDIRECT_PORT=9223
 export HOST=0.0.0.0
 
 # Run the npm start command
-env npm run start
+npm run start
