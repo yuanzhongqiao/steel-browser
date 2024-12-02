@@ -91,16 +91,13 @@ The fastest way to get started is to build and run the Docker image:
 # Clone and build the Docker image
 git clone https://github.com/steel-dev/steel-browser
 cd steel-browser
-docker build -t steel .
-
-# Run the server
-docker run -p 3000:3000 -p 5173:5173 -p 9223:9223 steel
+docker compose up
 ```
 
 Alternatively, if you have Node.js and Chrome installed, you can run the server directly:
 
 ```bash
-npm install
+npm run install
 npm run dev
 ```
 
