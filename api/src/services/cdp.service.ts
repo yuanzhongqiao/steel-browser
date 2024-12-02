@@ -85,6 +85,8 @@ export class CDPService extends EventEmitter {
       this.emit(event, payload);
       if (event === EmitEvent.Log) {
         this.logEvent(payload);
+      } else if (event === EmitEvent.Recording) {
+        this.logEvent({ type: BrowserEventType.Recording, text: JSON.stringify(payload), timestamp: new Date() });
       }
     } catch (error) {
       this.logger.error(`Error emitting event: ${error}`);
@@ -119,241 +121,162 @@ export class CDPService extends EventEmitter {
       this.customEmit(EmitEvent.PageId, { pageId });
 
       await page.setBypassCSP(true);
-
-      try {
-        if (page.isClosed()) return;
-
-        await page.evaluate(recordScript);
-
-        // Check if the function is already defined before exposing it
-        const hasBinding = await page.evaluate(() => {
-          //@ts-ignore
-          return typeof window.handleSteelEvent !== "undefined";
-        });
-
-        if (!hasBinding) {
-          await page.exposeFunction("handleSteelEvent", (detail: any) => {
-            this.customEmit(EmitEvent.Recording, {
-              event: detail.payload,
-            });
-            if (this.launchConfig?.logSinkUrl) {
-              fetch(this.launchConfig.logSinkUrl, {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  type: detail.type,
-                  text: JSON.stringify(detail.payload),
-                  timestamp: detail.timestamp,
-                }),
-              }).catch((error) => {
-                this.logger.error(`Error sending log event: ${error}`);
-              });
-            }
-          });
-        }
-
-        // Modify the page-side recording to dispatch events instead of making fetch calls
-        await page.evaluate((pageId: string) => {
-          //@ts-ignore
-          if (typeof rrweb !== "undefined" && !window.__rrwebRecordingInitialized) {
-            //@ts-ignore
-            rrweb.record({
-              emit(event) {
-                // Dispatch custom event instead of fetch
-                window.dispatchEvent(
-                  new CustomEvent("steel-log-event", {
-                    detail: {
-                      type: "Recording",
-                      payload: { pageId, event },
-                      timestamp: new Date().toISOString(),
-                    },
-                  }),
-                );
-              },
-            });
-            //@ts-ignore
-            window.__rrwebRecordingInitialized = true;
-          }
-        }, pageId);
-
-        // Connect the custom event to our exposed function
-        await page.evaluate(() => {
-          window.addEventListener("steel-log-event", (e: any) => {
-            // @ts-ignore
-            window.handleSteelEvent(e.detail);
-          });
-        });
-      } catch (error) {
-        this.logger.error(`Error injecting script: ${error}`);
-      }
     }
   }
 
   private async handleNewTarget(target: Target) {
-    if (target.type() !== "page") return;
-
-    const page = await target.page().catch((e) => {
-      this.logger.error(`Error handling new target in CDPService: ${e}`);
-      return null;
-    });
-
-    if (page) {
-      //@ts-ignore
-      const pageId = page.target()._targetId;
-
-      if (this.launchConfig?.customHeaders) {
-        await page.setExtraHTTPHeaders({
-          ...env.DEFAULT_HEADERS,
-          ...this.launchConfig.customHeaders,
-        });
-      } else if (env.DEFAULT_HEADERS) {
-        await page.setExtraHTTPHeaders(env.DEFAULT_HEADERS);
-      }
-
-      if (this.launchConfig?.cookies?.length) {
-        await page.setCookie(...this.launchConfig.cookies);
-      }
-
-      const fingerprintInjector = new FingerprintInjector();
-      //@ts-ignore
-      await fingerprintInjector.attachFingerprintToPuppeteer(page, this.fingerprintData!);
-
-      page.on("error", (err) => {
-        // this.logger.error(`Page error: ${err}`);
-        this.customEmit(EmitEvent.Log, {
-          type: BrowserEventType.Error,
-          text: JSON.stringify({ pageId, message: err.message, name: err.name }),
-          timestamp: new Date(),
-        });
+    if (target.type() !== "page") {
+      const page = await target.page().catch((e) => {
+        this.logger.error(`Error handling new target in CDPService: ${e}`);
+        return null;
       });
 
-      page.on("pageerror", (err) => {
-        this.customEmit(EmitEvent.Log, {
-          type: BrowserEventType.PageError,
-          text: JSON.stringify({ pageId, message: err.message, name: err.name }),
-          timestamp: new Date(),
-        });
-      });
+      if (page) {
+        //@ts-ignore
+        const pageId = page.target()._targetId;
 
-      page.on("framenavigated", (frame) => {
-        if (!frame.parentFrame()) {
-          this.logger.info(`Navigated to ${frame.url()}`);
+        if (this.launchConfig?.customHeaders) {
+          await page.setExtraHTTPHeaders({
+            ...env.DEFAULT_HEADERS,
+            ...this.launchConfig.customHeaders,
+          });
+        } else if (env.DEFAULT_HEADERS) {
+          await page.setExtraHTTPHeaders(env.DEFAULT_HEADERS);
+        }
+
+        if (this.launchConfig?.cookies?.length) {
+          await page.setCookie(...this.launchConfig.cookies);
+        }
+
+        const fingerprintInjector = new FingerprintInjector();
+        //@ts-ignore
+        await fingerprintInjector.attachFingerprintToPuppeteer(page, this.fingerprintData!);
+
+        page.on("error", (err) => {
+          // this.logger.error(`Page error: ${err}`);
           this.customEmit(EmitEvent.Log, {
-            type: BrowserEventType.Navigation,
-            text: JSON.stringify({ pageId, url: frame.url() }),
+            type: BrowserEventType.Error,
+            text: JSON.stringify({ pageId, message: err.message, name: err.name }),
             timestamp: new Date(),
           });
+        });
+
+        page.on("pageerror", (err) => {
+          this.customEmit(EmitEvent.Log, {
+            type: BrowserEventType.PageError,
+            text: JSON.stringify({ pageId, message: err.message, name: err.name }),
+            timestamp: new Date(),
+          });
+        });
+
+        page.on("framenavigated", (frame) => {
+          if (!frame.parentFrame()) {
+            this.logger.info(`Navigated to ${frame.url()}`);
+            this.customEmit(EmitEvent.Log, {
+              type: BrowserEventType.Navigation,
+              text: JSON.stringify({ pageId, url: frame.url() }),
+              timestamp: new Date(),
+            });
+          }
+        });
+
+        page.on("console", (message) => {
+          console.log("console - ", message.text());
+          this.logger.info(`Console message: ${message.type()}: ${message.text()}`);
+          this.customEmit(EmitEvent.Log, {
+            type: BrowserEventType.Console,
+            text: JSON.stringify({ pageId, type: message.type(), text: message.text() }),
+            timestamp: new Date(),
+          });
+        });
+
+        page.on("requestfailed", (request) => {
+          // this.logger.warn(`Request failed: "${request.failure()?.errorText}": ${request.url()}`);
+          this.customEmit(EmitEvent.Log, {
+            type: BrowserEventType.RequestFailed,
+            text: JSON.stringify({ pageId, errorText: request.failure()?.errorText, url: request.url() }),
+            timestamp: new Date(),
+          });
+        });
+
+        await page.setRequestInterception(true);
+
+        page.on("request", async (request) => {
+          const headers = request.headers();
+          delete headers["accept-language"]; // Patch to help with headless detection
+
+          this.customEmit(EmitEvent.Log, {
+            type: BrowserEventType.Request,
+            text: JSON.stringify({ pageId, method: request.method(), url: request.url() }),
+            timestamp: new Date(),
+          });
+
+          if (request.url().startsWith("file://")) {
+            this.logger.error(`Blocked request to file protocol: ${request.url()}`);
+            page.close().catch(() => {});
+            this.shutdown();
+          } else {
+            await request.continue({ headers });
+          }
+        });
+
+        page.on("response", (response) => {
+          this.customEmit(EmitEvent.Log, {
+            type: BrowserEventType.Response,
+            text: JSON.stringify({ pageId, status: response.status(), url: response.url() }),
+            timestamp: new Date(),
+          });
+
+          if (response.url().startsWith("file://")) {
+            this.logger.error(`Blocked response from file protocol: ${response.url()}`);
+            page.close().catch(() => {});
+            this.shutdown();
+          }
+        });
+
+        const cdpSession = await page.createCDPSession();
+
+        const { width, height } = this.launchConfig?.dimensions || { width: 1920, height: 1080 };
+        if (this.launchConfig?.dimensions) {
+          this.logger.info("Setting viewport to", width, height);
+          await page.setViewport({ width, height });
+          await (
+            await page.createCDPSession()
+          ).send("Page.setDeviceMetricsOverride", {
+            screenHeight: height,
+            screenWidth: width,
+            width,
+            height,
+            mobile: /phone|android|mobile/i.test(this.fingerprintData!.fingerprint.navigator.userAgent),
+            screenOrientation:
+              height > width ? { angle: 0, type: "portraitPrimary" } : { angle: 90, type: "landscapePrimary" },
+            deviceScaleFactor: this.fingerprintData!.fingerprint.screen.devicePixelRatio,
+          });
         }
-      });
 
-      page.on("console", (message) => {
-        this.logger.info(`Console message: ${message.type()}: ${message.text()}`);
-        this.customEmit(EmitEvent.Log, {
-          type: BrowserEventType.Console,
-          text: JSON.stringify({ pageId, type: message.type(), text: message.text() }),
-          timestamp: new Date(),
-        });
-      });
-
-      page.on("requestfailed", (request) => {
-        // this.logger.warn(`Request failed: "${request.failure()?.errorText}": ${request.url()}`);
-        this.customEmit(EmitEvent.Log, {
-          type: BrowserEventType.RequestFailed,
-          text: JSON.stringify({ pageId, errorText: request.failure()?.errorText, url: request.url() }),
-          timestamp: new Date(),
-        });
-      });
-
-      await page.setRequestInterception(true);
-
-      page.on("request", async (request) => {
-        const headers = request.headers();
-        delete headers["accept-language"]; // Patch to help with headless detection
-
-        this.customEmit(EmitEvent.Log, {
-          type: BrowserEventType.Request,
-          text: JSON.stringify({ pageId, method: request.method(), url: request.url() }),
-          timestamp: new Date(),
+        page.on("close", async () => {
+          cdpSession.removeAllListeners();
         });
 
-        if (request.url().startsWith("file://")) {
-          this.logger.error(`Blocked request to file protocol: ${request.url()}`);
-          page.close().catch(() => {});
-          this.shutdown();
-        } else {
-          await request.continue({ headers });
-        }
-      });
+        // await installMouseHelper(page);
 
-      page.on("response", (response) => {
-        this.customEmit(EmitEvent.Log, {
-          type: BrowserEventType.Response,
-          text: JSON.stringify({ pageId, status: response.status(), url: response.url() }),
-          timestamp: new Date(),
-        });
+        const updateLocalStorage = (host: string, storage: Record<string, string>) => {
+          this.localStorageData[host] = { ...this.localStorageData[host], ...storage };
+        };
 
-        if (response.url().startsWith("file://")) {
-          this.logger.error(`Blocked response from file protocol: ${response.url()}`);
-          page.close().catch(() => {});
-          this.shutdown();
-        }
-      });
+        await page.exposeFunction("updateLocalStorage", updateLocalStorage);
 
-      const cdpSession = await page.createCDPSession();
-
-      const { width, height } = this.launchConfig?.dimensions || { width: 1920, height: 1080 };
-      if (this.launchConfig?.dimensions) {
-        this.logger.info("Setting viewport to", width, height);
-        await page.setViewport({ width, height });
-        await (
-          await page.createCDPSession()
-        ).send("Page.setDeviceMetricsOverride", {
-          screenHeight: height,
-          screenWidth: width,
-          width,
-          height,
-          mobile: /phone|android|mobile/i.test(this.fingerprintData!.fingerprint.navigator.userAgent),
-          screenOrientation:
-            height > width ? { angle: 0, type: "portraitPrimary" } : { angle: 90, type: "landscapePrimary" },
-          deviceScaleFactor: this.fingerprintData!.fingerprint.screen.devicePixelRatio,
+        await page.evaluateOnNewDocument(() => {
+          window.addEventListener("beforeunload", () => {
+            updateLocalStorage(window.location.host, { ...window.localStorage });
+          });
         });
       }
-
-      cdpSession.on("Page.screencastFrame", async (params: any) => {
-        await cdpSession.send("Page.screencastFrameAck", { sessionId: params.sessionId });
-        await this.logEvent({
-          type: BrowserEventType.ScreencastFrame,
-          text: JSON.stringify({ data: params.data, pageId }),
-          timestamp: new Date(),
-        });
-      });
-
-      await cdpSession.send("Page.startScreencast", {
-        format: "jpeg",
-        quality: 100,
-        maxWidth: width,
-        maxHeight: height,
-        everyNthFrame: 1,
-      });
-
-      page.on("close", async () => {
-        cdpSession.removeAllListeners();
-      });
-
-      await installMouseHelper(page);
-
-      const updateLocalStorage = (host: string, storage: Record<string, string>) => {
-        this.localStorageData[host] = { ...this.localStorageData[host], ...storage };
-      };
-
-      await page.exposeFunction("updateLocalStorage", updateLocalStorage);
-
-      await page.evaluateOnNewDocument(() => {
-        window.addEventListener("beforeunload", () => {
-          updateLocalStorage(window.location.host, { ...window.localStorage });
-        });
+    } else if (target.type() === "background_page") {
+      console.log("Background page created:", target.url());
+      const page = await target.page();
+      page?.on("console", (message) => {
+        console.log("extension console - ", message.text());
       });
     }
   }
@@ -400,18 +323,19 @@ export class CDPService extends EventEmitter {
 
     const { options, userAgent } = this.launchConfig;
 
-    const extensions = this.launchConfig.extensions ? [...this.launchConfig.extensions] : [];
+    const defaultExtensions = ["recorder"];
+    const customExtensions = this.launchConfig.extensions ? [...this.launchConfig.extensions] : [];
 
     const proxyUrl = this.launchConfig.options.proxyUrl
       ? await proxyChain.anonymizeProxy(this.launchConfig.options.proxyUrl)
       : null;
 
-    const extensionPaths = getExtensionPaths(extensions);
+    const extensionPaths = getExtensionPaths([...defaultExtensions, ...customExtensions]);
 
     const fingerprintGen = new FingerprintGenerator({
       devices: ["desktop"],
       operatingSystems: ["linux"],
-      browsers: [{ name: "chrome", minVersion: 130 }],
+      browsers: [{ name: "chrome", minVersion: 128 }],
       locales: ["en-US", "en"],
     });
 
@@ -421,7 +345,7 @@ export class CDPService extends EventEmitter {
       ? [`--load-extension=${extensionPaths.join(",")}`, `--disable-extensions-except=${extensionPaths.join(",")}`]
       : [];
 
-    const timezone = "America/New_York"; // Default timezone, can be customized
+    const timezone = "America/New_York"; // TODO: determine timezone from session config or proxy
 
     const launchArgs = [
       "--remote-allow-origins=*",

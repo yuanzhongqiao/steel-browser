@@ -35,7 +35,7 @@ RUN node ./scripts/patcher.js patch --packagePath /app/node_modules/puppeteer-co
 FROM base
 WORKDIR /app
 RUN apt-get update \
-    && apt-get install -y wget gnupg \
+    && apt-get install -y wget nginx gnupg \
     && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
     # && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' <- add this back in when supported \ 
     && apt-get update \
@@ -62,6 +62,7 @@ COPY entrypoint.sh /app/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh
 
 EXPOSE 3000
+EXPOSE 9223
 
 ENV HOST_IP=localhost
 # Set the DISPLAY environment variable

@@ -39,7 +39,12 @@ export function SessionContainer() {
                   <span className="text-xs ml-auto">
                     {mostRecentUrl.substring(0, 50)}
                   </span>
-                  <div className="flex items-center ml-auto hover:cursor-pointer">
+                  <div
+                    className="flex items-center ml-auto hover:cursor-pointer"
+                    onClick={() => {
+                      window.open(mostRecentUrl, "_blank");
+                    }}
+                  >
                     <Link2Icon className="w-4 h-4" />
                   </div>
                 </Badge>
