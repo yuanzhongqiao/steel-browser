@@ -122,7 +122,7 @@ Make sure you have the Chrome executable installed and in one of these paths:
   - `C:\Program Files\Google\Chrome\Application\chrome.exe` OR
   - `C:\Program Files (x86)\Google\Chrome\Application\chrome.exe`
 
-For more details on where this is checked look at [`src/server/utils/browser.ts`](./src/server/utils/browser.ts).
+For more details on where this is checked look at [`api/src/utils/browser.ts`](./api/src/utils/browser.ts).
 
 ## Usage
 The Steel browser provides a REST API to control a headless browser powered by Puppeteer. Under the hood, it manages browser instances, sessions, and pages, allowing you to perform complex browsing tasks programmatically.
