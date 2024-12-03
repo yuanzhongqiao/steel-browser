@@ -125,7 +125,7 @@ export class CDPService extends EventEmitter {
   }
 
   private async handleNewTarget(target: Target) {
-    if (target.type() !== "page") {
+    if (target.type() === "page") {
       const page = await target.page().catch((e) => {
         this.logger.error(`Error handling new target in CDPService: ${e}`);
         return null;
@@ -181,7 +181,6 @@ export class CDPService extends EventEmitter {
         });
 
         page.on("console", (message) => {
-          console.log("console - ", message.text());
           this.logger.info(`Console message: ${message.type()}: ${message.text()}`);
           this.customEmit(EmitEvent.Log, {
             type: BrowserEventType.Console,
