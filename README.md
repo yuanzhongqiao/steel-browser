@@ -17,7 +17,7 @@
   
 [![Commit Activity](https://img.shields.io/github/commit-activity/m/steel-dev/steel-browser?color=yellow)](https://github.com/steel-dev/steel-browser/commits/main)
 [![License](https://img.shields.io/github/license/steel-dev/steel-browser?color=yellow)](https://github.com/steel-dev/steel-browser/blob/main/LICENSE)
-[![Discord](https://img.shields.io/discord/1285696350117167226?label=discord)](https://discord.gg/gPpvhNvc5R)
+[![Discord](https://img.shields.io/discord/1285696350117167226?label=discord)](https://discord.gg/steel-dev)
 [![Twitter Follow](https://img.shields.io/twitter/follow/steeldotdev)](https://twitter.com/steeldotdev)
 [![GitHub stars](https://img.shields.io/github/stars/steel-dev/steel-browser)](https://github.com/steel-dev/steel-browser)
 
@@ -46,7 +46,7 @@
 
 **This repo is the core building block behind Steel - a production-ready, containerized browser sandbox that you can deploy anywhere.** It includes built-in stealth capabilities, text-to-markdown session management, UI to view/debug sessions, and full browser control through standard automation frameworks like Puppeteer, Playwright, and Selenium 🔥
 
-> Steel is in public beta and evolving every day. Your suggestions, ideas, and reported bugs help us immensely. Do not hesitate to join in the conversation on [Discord](https://discord.gg/gPpvhNvc5R) or raise a GitHub issue. We read everything, respond to most, and love you.
+> Steel is in public beta and evolving every day. Your suggestions, ideas, and reported bugs help us immensely. Do not hesitate to join in the conversation on [Discord](https://discord.gg/steel-dev) or raise a GitHub issue. We read everything, respond to most, and love you.
 
 
 
@@ -206,7 +206,7 @@ await driver.get("https://www.google.com");
 
 ## Get involved
 The Steel browser is an open-source project, and we welcome contributions!
-- Questions/ideas/feedback? Come hangout on [Discord](https://discord.gg/gPpvhNvc5R)
+- Questions/ideas/feedback? Come hangout on [Discord](https://discord.gg/steel-dev)
 - Found a bug? Open an issue on [GitHub](https://github.com/steel-dev/steel-browser/issues)
 
 ## License
