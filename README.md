@@ -1,7 +1,7 @@
 <div class="Box-sc-g0xbh4-0 QkQOb js-snippet-clipboard-copy-unpositioned" data-hpc="true"><article class="markdown-body entry-content container-lg" itemprop="text"><br>
 <p align="center" dir="auto">
 <a href="https://steel.dev" rel="nofollow">
-  <img src="/steel-dev/steel-browser/raw/main/images/steel_header_logo.png" alt="钢制标志" width="100" style="max-width: 100%;" _mstalt="131014" _msthash="234">
+  <img src="https://github.com/steel-dev/steel-browser/raw/main/images/steel_header_logo.png" alt="钢制标志" width="100" style="max-width: 100%;" _mstalt="131014" _msthash="234">
 </a>
 </p>
 <div class="markdown-heading" dir="auto"><h3 align="center" tabindex="-1" class="heading-element" dir="auto"><b _msttexthash="3462550" _msthash="235">钢</b></h3><a id="user-content-steel" class="anchor" aria-label="永久链接： Steel" href="#steel" _mstaria-label="272883" _msthash="236"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
@@ -28,31 +28,8 @@
  
 食谱" href="#----------get-started--------------documentation------------website-----------cookbook--" _mstaria-label="2318030" _msthash="244"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
 <p align="center" dir="auto" _msthidden="3">
-  <animated-image data-catalyst="" _msthidden="3" style="width: 600px;"><a target="_blank" rel="noopener noreferrer" href="/steel-dev/steel-browser/blob/main/images/demo.gif" data-target="animated-image.originalLink" _msthidden="1"><img src="/steel-dev/steel-browser/raw/main/images/demo.gif" alt="Steel 演示" style="max-width: 100%; display: inline-block;" data-target="animated-image.originalImage" _mstalt="129168" _msthash="245" _mstvisible="0"></a>
-      <span class="AnimatedImagePlayer" data-target="animated-image.player" _msthidden="2" hidden="">
-        <a data-target="animated-image.replacedLink" class="AnimatedImagePlayer-images" href="https://github.com/steel-dev/steel-browser/blob/main/images/demo.gif" target="_blank" _msthidden="1">
-          
-        <span data-target="animated-image.imageContainer" _msthidden="1">
-            <img data-target="animated-image.replacedImage" alt="Steel Demo" class="AnimatedImagePlayer-animatedImage" src="https://github.com/steel-dev/steel-browser/raw/main/images/demo.gif" _msthidden="A" _mstalt="129168" _msthash="246" style="display: block; opacity: 1;">
-          <canvas class="AnimatedImagePlayer-stillImage" aria-hidden="true" width="600" height="407"></canvas></span></a>
-        <button data-target="animated-image.imageButton" class="AnimatedImagePlayer-images" tabindex="-1" aria-label="Play Steel Demo" _msthidden="A" _mstaria-label="221455" _msthash="393" hidden=""></button>
-        <span class="AnimatedImagePlayer-controls" data-target="animated-image.controls" _msthidden="1" hidden="">
-          <button data-target="animated-image.playButton" class="AnimatedImagePlayer-button" aria-label="Play Steel Demo" _msthidden="A" _mstaria-label="221455" _msthash="392">
-            <svg aria-hidden="true" focusable="false" class="octicon icon-play" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 13.5427V2.45734C4 1.82607 4.69692 1.4435 5.2295 1.78241L13.9394 7.32507C14.4334 7.63943 14.4334 8.36057 13.9394 8.67493L5.2295 14.2176C4.69692 14.5565 4 14.1739 4 13.5427Z">
-            </path></svg>
-            <svg aria-hidden="true" focusable="false" class="octicon icon-pause" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-              <rect x="4" y="2" width="3" height="12" rx="1"></rect>
-              <rect x="9" y="2" width="3" height="12" rx="1"></rect>
-            </svg>
-          </button>
-          <a data-target="animated-image.openButton" aria-label="Open Steel Demo in new window" class="AnimatedImagePlayer-button" href="https://github.com/steel-dev/steel-browser/blob/main/images/demo.gif" target="_blank" _msthidden="A" _mstaria-label="614367" _msthash="247">
-            <svg aria-hidden="true" class="octicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-              <path fill-rule="evenodd" d="M10.604 1h4.146a.25.25 0 01.25.25v4.146a.25.25 0 01-.427.177L13.03 4.03 9.28 7.78a.75.75 0 01-1.06-1.06l3.75-3.75-1.543-1.543A.25.25 0 0110.604 1zM3.75 2A1.75 1.75 0 002 3.75v8.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 12.25v-3.5a.75.75 0 00-1.5 0v3.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-8.5a.25.25 0 01.25-.25h3.5a.75.75 0 000-1.5h-3.5z"></path>
-            </svg>
-          </a>
-        </span>
-      </span></animated-image>
+  <animated-image data-catalyst="" _msthidden="3" style="width: 600px;"><a target="_blank" rel="noopener noreferrer" href="https://github.com/steel-dev/steel-browser/blob/main/images/demo.gif" data-target="animated-image.originalLink" _msthidden="1"><img src="https://github.com/steel-dev/steel-browser/raw/main/images/demo.gif" alt="Steel 演示" style="max-width: 100%; display: inline-block;" data-target="animated-image.originalImage" _mstalt="129168" _msthash="245" _mstvisible="0"></a>
+ 
 </p>
 <p dir="auto" _msttexthash="1235380848" _msthash="248"><a href="https://steel.dev" rel="nofollow" _istranslated="1">Steel.dev</a> 是一个开源浏览器 API，可以轻松构建与 Web 交互的 AI 应用程序和代理。您无需从头开始构建自动化基础设施，而是可以专注于 AI 应用程序，而 Steel 会处理复杂性。</p>
 <p dir="auto" _msttexthash="2679141959" _msthash="249"><strong _istranslated="1">此存储库是 Steel 背后的核心构建块，Steel 是一个生产就绪的容器化浏览器沙盒，您可以将其部署在任何地方。</strong>它包括内置的隐身功能、文本到 markdown 会话管理、用于查看/调试会话的 UI 以及通过 Puppeteer、Playwright 和 Selenium 🔥 等标准自动化框架进行的全面浏览器控制</p>
@@ -104,30 +81,12 @@
 git clone https://github.com/steel-dev/steel-browser
 <span class="pl-c1">cd</span> steel-browser
 docker compose up</pre><div class="zeroclipboard-container">
-    <clipboard-copy aria-label="Copy" class="ClipboardButton btn btn-invisible js-clipboard-copy m-2 p-0 d-flex flex-justify-center flex-items-center" data-copy-feedback="Copied!" data-tooltip-direction="w" value="# Clone and build the Docker image
-git clone https://github.com/steel-dev/steel-browser
-cd steel-browser
-docker compose up" tabindex="0" role="button">
-      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon">
-    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
-</svg>
-      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none">
-    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
-</svg>
-    </clipboard-copy>
+   
   </div></div>
 <p dir="auto" _msttexthash="225744649" _msthash="280">或者，如果您安装了 Node.js 和 Chrome，则可以直接运行服务器：</p>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>npm run install
 npm run dev</pre><div class="zeroclipboard-container">
-    <clipboard-copy aria-label="Copy" class="ClipboardButton btn btn-invisible js-clipboard-copy m-2 p-0 d-flex flex-justify-center flex-items-center" data-copy-feedback="Copied!" data-tooltip-direction="w" value="npm run install
-npm run dev" tabindex="0" role="button">
-      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon">
-    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
-</svg>
-      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none">
-    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
-</svg>
-    </clipboard-copy>
+   
   </div></div>
 <p dir="auto" _msttexthash="56512924" _msthash="281">这将在端口 3000 上启动 Steel 服务器。</p>
 <p dir="auto" _msttexthash="167120187" _msthash="282">确保您已安装 Chrome 可执行文件并位于以下路径之一中：</p>
